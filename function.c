@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:05:11 by abenmous          #+#    #+#             */
-/*   Updated: 2023/02/11 12:16:07 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/02/16 11:11:44 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,33 +75,6 @@ char	**ft_split(char const *s, char c)
 		j++;
 	}
 	return (p);
-}
-
-char	*ft_strjoin(char *str1, char *str2)
-{
-	int		i;
-	int		j;
-	char	*str3;
-
-	i = -1;
-	j = 0;
-	if (!str1 && !str2)
-		return (0);
-	if (!str1)
-		str1 = my_calloc(1, 1);
-	str3 = malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
-	if (!str3)
-	{
-		free(str1);
-		return (0);
-	}
-	while (str1[++i])
-		str3[i] = str1[i];
-	while (str2[j])
-		str3[i++] = str2[j++];
-	str3[i] = '\0';
-	free(str1);
-	return (str3);
 }
 
 void	*my_calloc(size_t count, size_t size)

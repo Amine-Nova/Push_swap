@@ -3,79 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abenmous <abenmous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:23:06 by abenmous          #+#    #+#             */
-/*   Updated: 2023/02/11 13:09:45 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:56:56 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int	num_count(char **av)
 {
-	int	a;
-	int	b;
-	int	c;
+	int		i;
+	char	**str;
+	int		j;
+	int		k;
 
-	a = 0;
-	b = 1;
-	c = 0;
-	while (str[a] == 32 || (str[a] >= 9 && str[a] <= 13))
-		a++;
-	while (str[a] == '+' || str[a] == '-')
+	k = 0;
+	i = 0;
+	while (av[++i])
 	{
-		if (str[a] == '-')
-			b = -1;
-		a++;
+		j = 0;
+		str = ft_split(av[i], ' ');
+		while (str[j])
+		{
+			j++;
+			k++;
+		}
 	}
-	while (str[a] >= '0' && str[a] <= '9')
-	{
-		c = c * 10 + str[a] - 48;
-		a++;
-	}
-	return (c * b);
+	return (k);
 }
 
-// int check_dup(char **str)
-// {
-// }
-
-int	check_error(int c, char **av)
+int	store_str(char **av)
 {
-	(void)c;
-	char **str;
-	int	i;
-	// int *s;
-	int l;
-	int j;
+	int		i;
+	char	**str;
+	int		l;
+	int		j;
 
 	i = 0;
-	while(av[++i])
+	l = num_count(av);
+	while (av[++i])
 	{
+		j = 0;
 		str = ft_split(av[i], ' ');
 		j = 0;
-		while(str[j])
+		while (str[j])
 		{
-			l = 0;
-			while(str[j][l])
-			{
-				if((str[j][l] == '-' || str[j][l] == '+') && (str[j][l + 1] == '-' || str[j][l + 1] == '+'))
-					return(0);
-				l++;
-			}
+			if (!check_error(str[j]))
+				return (0);
 			j++;
 		}
 	}
-	printf("%d\n", j);
-	// while(str[i])
-	// {
-	// 	s[i] = ft_atoi(str[i]);
-	// 	i++;
-	// }
-	return (0);
+	return (1);
 }
-int main(int ac, char **av)
+
+int	*store_num(char **av)
 {
-	check_error(ac, av);
+	char	**str;
+	int		*s;
+	int		k;
+	int		j;
+	int		i;
+
+	i = 1;
+	k = num_count(av);
+	s = (int *)malloc(sizeof (int *) * k);
+	k = 0;
+	while (av[i])
+	{
+		str = ft_split(av[i], ' ');
+		j = 0;
+		while (str[j])
+		{
+			s[k] = ft_atoi(str[j]);
+			k++;
+			j++;
+		}
+		i++;
+	}
+	return (s);
 }

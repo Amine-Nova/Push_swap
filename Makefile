@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abenmous <abenmous@student.42.fr>          +#+  +:+       +#+         #
+#    By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 14:32:26 by abenmous          #+#    #+#              #
-#    Updated: 2023/02/10 17:05:49 by abenmous         ###   ########.fr        #
+#    Updated: 2023/02/23 17:06:37 by abenmous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,14 @@ NAME = push_swap
 
 SRCS = push_swap.c \
 	   function.c \
+	   function_set.c \
+	   function_set2.c \
+	   function_set3.c \
+	   ft_itoa.c \
+	   sort_num.c \
+	   main.c \
+	   error_check.c \
+	   function2.c
 
 CC = gcc
 
