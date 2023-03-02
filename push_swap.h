@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:24:05 by abenmous          #+#    #+#             */
-/*   Updated: 2023/02/24 19:56:01 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/01 20:14:56 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ typedef struct t_data
 	int		j;
 }	t_data;
 
+typedef struct s_list
+{
+	int a;
+	struct s_list *next;
+}t_list;
+
 int		ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char *str1, char *str2);
@@ -42,18 +48,7 @@ int		*store_num(char **av);
 int		check_space(char *str);
 int		space_handle(char **av);
 int		store_str(char **av);
-void	sa(t_data *data, int i);
-void	sb(t_data *data, int i);
-void	ss(t_data *data, int i);
-void	ra(t_data *data, int i);
-void	rb(t_data *data, int i);
-void	rr(t_data *data, int i);
-void	rra(t_data *data, int i);
-void	rrb(t_data *data, int i);
-void	pa(t_data *data);
-void	pb(t_data *data);
-void	rrr(t_data *data, int i);
-void	sort_2num(t_data *data);
-void	sort_3num(t_data *data);
-// void	sort_4num(t_data *data);
+t_list	*ft_lstnew(int content);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*store_list(int *s, char **av);
 #endif
