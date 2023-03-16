@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:18:21 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/01 20:27:44 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:06:42 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,70 @@
 
 int	main(int ac, char **av)
 {
-	t_list *stacka;
-	t_list *stackb;
-	t_list *tmp;
+	t_list	*stacka;
+	t_list	*stackb;
+	t_list	*freenode;
 	int		*s;
-	int		i;
 	int		l;
 
-	(void) ac;
+	(void)ac;
 	l = num_count(av);
-	i = space_handle(av);
-	if (i == 0)
-		return (0);
-	store_str(av);
-	if (i == 0)
-		return (0);
 	s = store_num(av);
-	if(!s)
+	if (!s)
 		return (0);
-	i = cmp_num(s, l);
-	if (i == 0)
-		return (0);
+	error_set(av, l, s);
 	stacka = store_list(s, av);
-	i = -1;
-	while(++i < l)
-		ft_lstadd_back(&stackb, 0);
-	tmp = stackb;
-	i = 0;
-	while(tmp)
+	stackb = NULL;
+	s = sorted_array(s, l);
+	number_sort(&stacka, &stackb, l, s);
+	while (stackb)
 	{
-		printf("%d\n", tmp->a);
-		tmp = tmp->next;
+		freenode = stackb;
+		stackb = stackb->next;
+		free(freenode);
+	}
+	free(s);
+}
+
+void	error_set(char **av, int l, int *s)
+{
+	space_handle(av);
+	store_str(av);
+	cmp_num(s, l);
+	check_mm(av);
+}
+
+int	find_max(t_list **stack)
+{
+	t_list	*temp;
+	int		i;
+
+	temp = *stack;
+	i = 0;
+	while (temp)
+	{
+		if (temp->i == ft_lst_size(*stack) - 1)
+			return (i);
 		i++;
+		temp = temp->next;
+	}
+	return (i);
+}
+
+void	number_sort(t_list **stacka, t_list **stackb, int l, int *s)
+{
+	(void)s;
+	if (l == 2)
+		sort_2num(stacka, 0);
+	if (l == 3)
+		sort_3num(stacka, 0);
+	if (l == 4)
+		sort_4num(stacka, stackb);
+	if (l == 5)
+		sort_5num(stacka, stackb);
+	if (l > 5)
+	{
+		sort_number(*stacka, s, l);
+		range_set(stacka, stackb, l);
 	}
 }

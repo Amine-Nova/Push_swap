@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:23:06 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/01 20:22:38 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/11 22:34:14 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,27 @@ int	store_str(char **av)
 {
 	int		i;
 	char	**str;
-	int		l;
 	int		j;
+	int		t;
 
 	i = 0;
-	l = num_count(av);
 	while (av[++i])
 	{
-		j = 0;
 		str = ft_split(av[i], ' ');
 		j = 0;
 		while (str[j])
 		{
-			if (!check_error(str[j]))
-				return (0);
+			t = check_error(str[j]);
+			if (t == 0)
+			{
+				free(str[j]);
+				free(str);
+				ft_printf("Error\n");
+				exit (1);
+			}
 			j++;
 		}
+		free(str);
 	}
 	return (1);
 }
@@ -51,20 +56,22 @@ int	num_count(char **av)
 		str = ft_split(av[i], ' ');
 		while (str[j])
 		{
+			free (str[j]);
 			j++;
 			k++;
 		}
+		free (str);
 	}
 	return (k);
 }
 
 int	*store_num(char **av)
 {
-	char	**str;
-	int		*s;
-	int		k;
-	int		j;
-	int		i;
+	char			**str;
+	int				*s;
+	int				k;
+	int				j;
+	int				i;
 
 	i = 1;
 	k = num_count(av);
@@ -77,19 +84,50 @@ int	*store_num(char **av)
 		while (str[j])
 		{
 			s[k] = ft_atoi(str[j]);
-			k++;
-			j++;
+			free(str[j]);
+				k++;
+				j++;
 		}
 		i++;
+		free(str);
 	}
 	return (s);
+}
+
+int	check_mm(char **av)
+{
+	char			**str;
+	long long int	k;
+	int				j;
+	int				i;
+
+	i = 0;
+	while (av[++i])
+	{
+		str = ft_split(av[i], ' ');
+		j = -1;
+		while (str[++j])
+		{
+			k = ft_atoi(str[j]);
+			if (k < INT_MIN || k > INT_MAX)
+			{
+				free(str[j]);
+				free(str);
+				ft_printf("Error\n");
+				exit (1);
+			}
+			free(str[j]);
+		}
+		free(str);
+	}
+	return (1);
 }
 
 t_list	*store_list(int *s, char **av)
 {
 	int		i;
-	t_list *list;
-	int l;
+	t_list	*list;
+	int		l;
 
 	list = NULL;
 	l = num_count(av);

@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:31:16 by abenmous          #+#    #+#             */
-/*   Updated: 2023/02/24 19:53:42 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/16 20:28:17 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,18 @@ int	check_error(char *str)
 				&& (str[i + 1] == 43 || str[i + 1] == 45
 					|| str[i + 1] == 0 || (str[i - 1] >= 48
 						&& str[i - 1] <= 57))))
-		{
-			ft_printf("ERROR\n");
 			return (0);
-		}
 		i++;
 	}
+	free (str);
 	return (1);
 }
 
 int	check_space(char *str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	while (str[i])
 	{
 		if (str[i] == ' ')
@@ -58,11 +54,10 @@ int	space_handle(char **av)
 	i = 0;
 	while (av[i])
 	{
-		check_space(av[i]);
 		if (check_space(av[i]) == 0)
 		{
-			ft_printf("ERROR\n");
-			return (0);
+			ft_printf("Error\n");
+			exit (1);
 		}
 		i++;
 	}
@@ -83,8 +78,9 @@ int	cmp_num(int *s, int l)
 		{
 			if (s[l] == s[j])
 			{
-				printf("ERROR\n");
-				return (0);
+				free(s);
+				ft_printf("Error\n");
+				exit (1);
 			}
 			j--;
 		}
