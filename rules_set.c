@@ -6,19 +6,19 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:38:23 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/16 12:12:20 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:20:56 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void stack_s(t_list **stack, int i)
+void	stack_s(t_list **stack, int i)
 {
-	t_list *tmp;
-	t_list *tmp1;
+	t_list	*tmp;
+	t_list	*tmp1;
 
 	if ((*stack)->next == NULL)
-		return;
+		return ;
 	tmp = (*stack)->next->next;
 	tmp1 = (*stack)->next;
 	(*stack)->next->next = (*stack);
@@ -30,13 +30,13 @@ void stack_s(t_list **stack, int i)
 		ft_printf("sb\n");
 }
 
-void stack_p(t_list **stack1, t_list **stack2, int i)
+void	stack_p(t_list **stack1, t_list **stack2, int i)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = (*stack1);
 	if (tmp == NULL)
-		return;
+		return ;
 	(*stack1) = (*stack1)->next;
 	tmp->next = NULL;
 	ft_lstadd_front(stack2, tmp);
@@ -46,15 +46,15 @@ void stack_p(t_list **stack1, t_list **stack2, int i)
 		ft_printf("pb\n");
 }
 
-void stack_r(t_list **stack, int i)
+void	stack_r(t_list **stack, int i)
 {
-	t_list *tmp;
-	t_list *tmp1;
-	t_list *tmp2;
+	t_list	*tmp;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
 	tmp = (*stack);
 	if (tmp->next == NULL)
-		return;
+		return ;
 	tmp1 = (*stack)->next;
 	tmp2 = (*stack)->next;
 	tmp->next = NULL;
@@ -68,14 +68,14 @@ void stack_r(t_list **stack, int i)
 		ft_printf("rb\n");
 }
 
-void stack_rr(t_list **stack, int i)
+void	stack_rr(t_list **stack, int i)
 {
-	t_list *tmp;
-	t_list *tmp1;
-	t_list *tmp2;
+	t_list	*tmp;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
 	if ((*stack)->next == NULL)
-		return;
+		return ;
 	tmp = (*stack);
 	tmp1 = (*stack);
 	tmp2 = (*stack);

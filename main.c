@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:18:21 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/16 18:06:42 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:21:35 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	main(int ac, char **av)
 		return (0);
 	error_set(av, l, s);
 	stacka = store_list(s, av);
+	if (if_sorted(stacka) == 1)
+		exit (0);
 	stackb = NULL;
 	s = sorted_array(s, l);
 	number_sort(&stacka, &stackb, l, s);
@@ -37,6 +39,18 @@ int	main(int ac, char **av)
 		free(freenode);
 	}
 	free(s);
+}
+
+int	if_sorted(t_list *stack)
+{
+	while (stack->next)
+	{
+		if (stack->a < stack->next->a)
+			stack = stack->next;
+		else
+			return (0);
+	}
+	return (1);
 }
 
 void	error_set(char **av, int l, int *s)

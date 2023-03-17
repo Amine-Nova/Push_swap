@@ -6,7 +6,7 @@
 #    By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 14:32:26 by abenmous          #+#    #+#              #
-#    Updated: 2023/03/16 21:07:53 by abenmous         ###   ########.fr        #
+#    Updated: 2023/03/17 18:56:18 by abenmous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,18 +30,21 @@ PRINTF =  ft_printf/libftprintf.a
 
 CFLAGS = -Wall -Werror -Wextra
 
-OBJS = 
+OBJS = ${SRCS:.c=.o}
 
 all : $(NAME)
 
 $(PRINTF) :
 	@make -C ft_printf
 
-$(NAME) : $(SRCS) $(PRINTF)
+%.o : %.c
+	@$(CC) $(CFLAGS) $^ -c 
+
+$(NAME) : $(OBJS) $(PRINTF)
 	@$(CC) $(CFLAGS) $^ -o $@
 
 clean :
-	@rm -rf 
+	@rm -rf $(OBJS)
 	@make clean -C ft_printf
 
 fclean : clean
