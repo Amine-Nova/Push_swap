@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:18:21 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/17 19:21:35 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/18 14:48:20 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	main(int ac, char **av)
 {
 	t_list	*stacka;
 	t_list	*stackb;
-	t_list	*freenode;
 	int		*s;
 	int		l;
 
-	(void)ac;
+	if (ac < 2)
+		return (0);
 	l = num_count(av);
 	s = store_num(av);
 	if (!s)
@@ -28,37 +28,33 @@ int	main(int ac, char **av)
 	error_set(av, l, s);
 	stacka = store_list(s, av);
 	if (if_sorted(stacka) == 1)
-		exit (0);
+		free_exit(stacka, s);
 	stackb = NULL;
 	s = sorted_array(s, l);
 	number_sort(&stacka, &stackb, l, s);
-	while (stackb)
-	{
-		freenode = stackb;
-		stackb = stackb->next;
-		free(freenode);
-	}
-	free(s);
+	free_exit(stacka, s);
 }
 
-int	if_sorted(t_list *stack)
+void	free_exit(t_list *stacka, int *s)
 {
-	while (stack->next)
+	t_list	*freenode;
+
+	while (stacka)
 	{
-		if (stack->a < stack->next->a)
-			stack = stack->next;
-		else
-			return (0);
+		freenode = stacka;
+		stacka = stacka->next;
+		free(freenode);
 	}
-	return (1);
+	free (s);
+	exit (0);
 }
 
 void	error_set(char **av, int l, int *s)
 {
-	space_handle(av);
-	store_str(av);
+	space_handle(av, s);
+	store_str(av, s);
 	cmp_num(s, l);
-	check_mm(av);
+	check_mm(av, s);
 }
 
 int	find_max(t_list **stack)

@@ -47,7 +47,7 @@ int	check_space(char *str)
 	return (0);
 }
 
-int	space_handle(char **av)
+int	space_handle(char **av, int *s)
 {
 	int	i;
 
@@ -56,6 +56,7 @@ int	space_handle(char **av)
 	{
 		if (check_space(av[i]) == 0)
 		{
+			free(s);
 			ft_printf("Error\n");
 			exit (1);
 		}

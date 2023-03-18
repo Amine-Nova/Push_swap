@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:55:37 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/09 16:40:55 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/18 14:51:47 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,16 @@ void	sort_5num2(t_list **stack, t_list **stack2, int j)
 		sort_4num(stack, stack2);
 		stack_p(stack2, stack, 0);
 	}
+}
+
+int	if_sorted(t_list *stack)
+{
+	while (stack->next)
+	{
+		if (stack->a < stack->next->a)
+			stack = stack->next;
+		else
+			return (0);
+	}
+	return (1);
 }

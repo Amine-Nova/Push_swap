@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:24:05 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/17 19:21:10 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/18 14:47:29 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int					cmp_num(int *s, int l);
 int					check_error(char *str);
 int					*store_num(char **av);
 int					check_space(char *str);
-int					space_handle(char **av);
-int					store_str(char **av);
+int					space_handle(char **av, int *s);
+int					store_str(char **av, int *s);
 t_list				*ft_lstnew(int content);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstadd_front(t_list **lst, t_list *new);
@@ -67,7 +67,7 @@ void				sort_4num2(t_list **stack, t_list **stack2, int j);
 void				sort_5num(t_list **stack, t_list **stack2);
 void				sort_5num1(t_list **stack, t_list **stack2, int j);
 void				sort_5num2(t_list **stack, t_list **stack2, int j);
-int					check_mm(char **av);
+int					check_mm(char **av, int *s);
 void				number_sort(t_list **stacka,
 						t_list **stackb, int l, int *s);
 int					*sorted_array(int *s, int l);
@@ -80,5 +80,6 @@ int					number_find(t_list *stackb);
 int					ft_lst_size(t_list *a);
 int					find_max(t_list **stack);
 int					if_sorted(t_list *stack);
+void				free_exit(t_list *stacka, int *s);
 
 #endif

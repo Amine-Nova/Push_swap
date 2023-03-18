@@ -6,18 +6,17 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:23:06 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/17 20:10:34 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/18 14:52:34 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	store_str(char **av)
+int	store_str(char **av, int *s)
 {
 	int		i;
 	char	**str;
 	int		j;
-	int		t;
 
 	i = 0;
 	while (av[++i])
@@ -26,9 +25,9 @@ int	store_str(char **av)
 		j = 0;
 		while (str[j])
 		{
-			t = check_error(str[j]);
-			if (t == 0)
+			if (!check_error(str[j]))
 			{
+				free(s);
 				free(str[j]);
 				free(str);
 				ft_printf("Error\n");
@@ -94,10 +93,9 @@ int	*store_num(char **av)
 	return (s);
 }
 
-int	check_mm(char **av)
+int	check_mm(char **av, int *s)
 {
 	char			**str;
-	long long int	k;
 	int				j;
 	int				i;
 
@@ -108,9 +106,9 @@ int	check_mm(char **av)
 		j = -1;
 		while (str[++j])
 		{
-			k = ft_atoi(str[j]);
-			if (k < INT_MIN || k > INT_MAX)
+			if (ft_atoi(str[j]) < INT_MIN || ft_atoi(str[j]) > INT_MAX)
 			{
+				free(s);
 				free(str[j]);
 				free(str);
 				ft_printf("Error\n");
