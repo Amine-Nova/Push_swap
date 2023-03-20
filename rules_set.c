@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:38:23 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/18 14:48:05 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/19 15:54:06 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	stack_s(t_list **stack, int i)
 		ft_printf("sb\n");
 }
 
-void	stack_p(t_list **stack1, t_list **stack2, int i)
+void	stack_pa(t_list **stack1, t_list **stack2, int i)
 {
 	t_list	*tmp;
 
@@ -42,6 +42,18 @@ void	stack_p(t_list **stack1, t_list **stack2, int i)
 	ft_lstadd_front(stack2, tmp);
 	if (i == 0)
 		ft_printf("pa\n");
+}
+
+void	stack_pb(t_list **stack1, t_list **stack2, int i)
+{
+	t_list	*tmp;
+
+	tmp = (*stack1);
+	if (tmp == NULL)
+		return ;
+	(*stack1) = (*stack1)->next;
+	tmp->next = NULL;
+	ft_lstadd_front(stack2, tmp);
 	if (i == 1)
 		ft_printf("pb\n");
 }

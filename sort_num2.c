@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:55:37 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/18 14:51:47 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/19 15:56:26 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ void	sort_5num1(t_list **stack, t_list **stack2, int j)
 		return ;
 	if (j == 1)
 	{
-		stack_p(stack, stack2, 1);
+		stack_pb(stack, stack2, 1);
 		sort_4num(stack, stack2);
-		stack_p(stack2, stack, 0);
+		stack_pa(stack2, stack, 0);
 	}
 	if (j == 2)
 	{
 		stack_s(stack, 0);
-		stack_p(stack, stack2, 1);
+		stack_pb(stack, stack2, 1);
 		sort_4num(stack, stack2);
-		stack_p(stack2, stack, 0);
+		stack_pa(stack2, stack, 0);
 	}
 }
 
@@ -70,24 +70,24 @@ void	sort_5num2(t_list **stack, t_list **stack2, int j)
 	{
 		stack_r(stack, 0);
 		stack_r(stack, 0);
-		stack_p(stack, stack2, 1);
+		stack_pb(stack, stack2, 1);
 		sort_4num(stack, stack2);
-		stack_p(stack2, stack, 0);
+		stack_pa(stack2, stack, 0);
 	}
 	if (j == 4)
 	{
 		stack_rr(stack, 0);
 		stack_rr(stack, 0);
-		stack_p(stack, stack2, 1);
+		stack_pb(stack, stack2, 1);
 		sort_4num(stack, stack2);
-		stack_p(stack2, stack, 0);
+		stack_pa(stack2, stack, 0);
 	}
 	if (j == 5)
 	{
 		stack_rr(stack, 0);
-		stack_p(stack, stack2, 1);
+		stack_pb(stack, stack2, 1);
 		sort_4num(stack, stack2);
-		stack_p(stack2, stack, 0);
+		stack_pa(stack2, stack, 0);
 	}
 }
 

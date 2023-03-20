@@ -6,23 +6,37 @@
 #    By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 14:32:26 by abenmous          #+#    #+#              #
-#    Updated: 2023/03/17 18:56:18 by abenmous         ###   ########.fr        #
+#    Updated: 2023/03/19 14:18:11 by abenmous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRCS = push_swap.c \
-	   function.c \
-	   ft_itoa.c \
-	   main.c \
-	   sort_num.c\
-	   rules_set.c \
-	   ft_lstnew.c \
-	   error_check.c \
-	   sort_num2.c \
-	   sort_num3.c \
-	   function2.c
+BONUS = checker
+
+SRCS =	push_swap.c \
+		function.c \
+		ft_itoa.c \
+		main.c \
+		sort_num.c \
+		rules_set.c \
+		linked_list.c \
+		error_check.c \
+		sort_num2.c \
+		sort_num3.c \
+		function2.c
+
+SRCS_BONUS =	checker_bonus.c \
+				push_swap.c \
+				function.c \
+				error_check.c \
+				rules_set.c \
+				linked_list.c \
+				bonus_file.c \
+				get_next_line.c \
+				get_next_line_utils.c \
+				function2.c
+
 
 CC = gcc
 
@@ -32,23 +46,30 @@ CFLAGS = -Wall -Werror -Wextra
 
 OBJS = ${SRCS:.c=.o}
 
+OBJS_BONUS = ${SRCS_BONUS:.c=.o}
+
 all : $(NAME)
+
+bonus : $(BONUS)
 
 $(PRINTF) :
 	@make -C ft_printf
 
 %.o : %.c
-	@$(CC) $(CFLAGS) $^ -c 
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJS) $(PRINTF)
 	@$(CC) $(CFLAGS) $^ -o $@
 
+$(BONUS) : $(OBJS_BONUS) $(PRINTF)
+	@$(CC) $(CFLAGS) $^ -o $@
+
 clean :
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJS) $(OBJS_BONUS)
 	@make clean -C ft_printf
 
 fclean : clean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(BONUS)
 	@make fclean -C ft_printf
 
 re : fclean all

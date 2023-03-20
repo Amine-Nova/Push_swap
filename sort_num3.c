@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:59:31 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/18 14:50:32 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/19 15:54:53 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ void	range_set(t_list **stacka, t_list **stackb, int l)
 	{
 		if ((*stacka)->i <= e)
 		{
-			stack_p(stacka, stackb, 1);
+			stack_pb(stacka, stackb, 1);
 			stack_r(stackb, 1);
 			e++;
 		}
 		else if ((*stacka)->i <= range + e)
 		{
-			stack_p(stacka, stackb, 1);
+			stack_pb(stacka, stackb, 1);
 			e++;
 		}
 		else
@@ -119,7 +119,7 @@ void	stack_set(t_list **stacka, t_list **stackb, int l)
 		len = ft_lst_size(*stackb) / 2;
 		if ((*stackb)->i == l)
 		{
-			stack_p(stackb, stacka, 0);
+			stack_pa(stackb, stacka, 0);
 			l--;
 		}
 		else if (find_max(stackb) < len)
