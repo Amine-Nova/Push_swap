@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 16:14:38 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/20 11:35:56 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:20:01 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ int	main(int ac, char **av)
 	str = get_next_line(0);
 	while (str)
 	{
-		rules_exe(&stacka, &stackb, str);
+		rules_exe(&stacka, &stackb, str, s);
 		free(str);
 		str = get_next_line(0);
 	}
-	if (if_sorted(stacka) == 1)
+	if (if_sorted(stacka) == 1 && stackb == NULL)
 		ft_printf("OK\n");
-	if (if_sorted(stacka) == 0)
+	if (if_sorted(stacka) == 0 || stackb)
 		ft_printf("K0\n");
-	free_exit(stacka, s);
+	free_exit(stacka, stackb, s);
 }
 
 void	error_set(char **av, int l, int *s)
@@ -50,7 +50,7 @@ void	error_set(char **av, int l, int *s)
 	check_mm(av, s);
 }
 
-void	free_exit(t_list *stacka, int *s)
+void	free_exit(t_list *stacka, t_list *stackb, int *s)
 {
 	t_list	*freenode;
 
@@ -60,8 +60,34 @@ void	free_exit(t_list *stacka, int *s)
 		stacka = stacka->next;
 		free(freenode);
 	}
+	while (stackb)
+	{
+		freenode = stackb;
+		stackb = stackb->next;
+		free(freenode);
+	}
 	free (s);
 	exit (0);
+}
+
+void	free_exit1(t_list *stacka, t_list *stackb, int *s)
+{
+	t_list	*freenode;
+
+	while (stacka)
+	{
+		freenode = stacka;
+		stacka = stacka->next;
+		free(freenode);
+	}
+	while (stackb)
+	{
+		freenode = stackb;
+		stackb = stackb->next;
+		free(freenode);
+	}
+	free (s);
+	exit (1);
 }
 
 int	if_sorted(t_list *stack)

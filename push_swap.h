@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:24:05 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/19 15:55:40 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:09:41 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ void				stack_set(t_list **stacka, t_list **stackb, int l);
 int					ft_lst_size(t_list *a);
 int					find_max(t_list **stack);
 int					if_sorted(t_list *stack);
-void				free_exit(t_list *stacka, int *s);
+void				free_exit(t_list *stacka, t_list *stackb, int *s);
 
 #endif

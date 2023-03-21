@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:38:23 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/19 15:54:06 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:56:45 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	stack_s(t_list **stack, int i)
 	t_list	*tmp;
 	t_list	*tmp1;
 
+	if (!(*stack))
+		return ;
 	if ((*stack)->next == NULL)
 		return ;
 	tmp = (*stack)->next->next;
@@ -34,6 +36,8 @@ void	stack_pa(t_list **stack1, t_list **stack2, int i)
 {
 	t_list	*tmp;
 
+	if (!(*stack1))
+		return ;
 	tmp = (*stack1);
 	if (tmp == NULL)
 		return ;
@@ -48,6 +52,8 @@ void	stack_pb(t_list **stack1, t_list **stack2, int i)
 {
 	t_list	*tmp;
 
+	if (!(*stack1))
+		return ;
 	tmp = (*stack1);
 	if (tmp == NULL)
 		return ;
@@ -64,6 +70,8 @@ void	stack_r(t_list **stack, int i)
 	t_list	*tmp1;
 	t_list	*tmp2;
 
+	if (!(*stack))
+		return ;
 	tmp = (*stack);
 	if (tmp->next == NULL)
 		return ;
@@ -86,6 +94,8 @@ void	stack_rr(t_list **stack, int i)
 	t_list	*tmp1;
 	t_list	*tmp2;
 
+	if (!(*stack))
+		return ;
 	if ((*stack)->next == NULL)
 		return ;
 	tmp = (*stack);

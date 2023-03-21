@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:23:06 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/20 11:42:05 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:27:12 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,18 +98,15 @@ int	check_mm(char **av, int *s)
 	char			**str;
 	int				j;
 	int				i;
-	int 			t;
 
 	i = 0;
-	t = 0;
 	while (av[++i])
 	{
 		str = ft_split(av[i], ' ');
 		j = -1;
 		while (str[++j])
 		{
-			t = ft_strlen(str[j]);
-			if (ft_atoi(str[j]) < INT_MIN || ft_atoi(str[j]) > INT_MAX || t > 11)
+			if (ft_atoi(str[j]) < INT_MIN || ft_atoi(str[j]) > INT_MAX || ft_strlen (str[j]) > 12)
 			{
 				free(s);
 				free(str[j]);
