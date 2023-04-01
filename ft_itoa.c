@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abenmous <abenmous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:40:28 by abenmous          #+#    #+#             */
-/*   Updated: 2023/02/16 12:05:55 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/04/01 16:11:45 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	count(long int l)
+static int	count(long long int l)
 {
 	int	j;
 
@@ -32,7 +32,7 @@ static int	count(long int l)
 	return (j);
 }
 
-static char	*outcome(int j, int long t, char *s2)
+static char	*outcome(int j, int long long t, char *s2)
 {
 	if (t == 0)
 	{
@@ -53,11 +53,11 @@ static char	*outcome(int j, int long t, char *s2)
 	return (s2);
 }
 
-char	*ft_itoa(int nb)
+char	*ft_itoa(long long int nb)
 {
-	int			i;
-	int long	n;
-	char		*s;
+	int				i;
+	int long long	n;
+	char			*s;
 
 	n = nb;
 	i = count(n);

@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:38:17 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/21 17:17:23 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/03/21 23:04:25 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	rules_exe2(t_list **stacka, t_list **stackb, char *str, int *s)
 		stack_pa(stackb, stacka, 3);
 	else
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		free(str);
 		free_exit1((*stacka), (*stackb), s);
 	}

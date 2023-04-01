@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:24:05 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/21 17:09:41 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/04/01 16:10:21 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <limits.h>
 # include "ft_printf/ft_printf.h"
 
@@ -30,7 +31,7 @@ char				**ft_split(char const *s, char c);
 void				*my_calloc(size_t count, size_t size);
 size_t				ft_strlen(char *s);
 int					ft_strcmp(char *s1, char *s2);
-char				*ft_itoa(int nb);
+char				*ft_itoa(long long int nb);
 int					num_count(char **av);
 int					cmp_num(int *s, int l);
 int					check_error(char *str);

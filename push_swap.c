@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:23:06 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/21 17:27:12 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/04/01 16:12:50 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	store_str(char **av, int *s)
 				free(s);
 				free(str[j]);
 				free(str);
-				ft_printf("Error\n");
+				write(2, "Error\n", 6);
 				exit (1);
 			}
 			j++;
@@ -106,12 +106,13 @@ int	check_mm(char **av, int *s)
 		j = -1;
 		while (str[++j])
 		{
-			if (ft_atoi(str[j]) < INT_MIN || ft_atoi(str[j]) > INT_MAX || ft_strlen (str[j]) > 12)
+			if (ft_atoi(str[j]) < INT_MIN || ft_atoi(str[j]) > INT_MAX
+				|| ft_strlen(ft_itoa(s[j])) > 12)
 			{
 				free(s);
 				free(str[j]);
 				free(str);
-				ft_printf("Error\n");
+				write(2, "Error\n", 6);
 				exit (1);
 			}
 			free(str[j]);

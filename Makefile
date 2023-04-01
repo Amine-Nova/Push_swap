@@ -6,7 +6,7 @@
 #    By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 14:32:26 by abenmous          #+#    #+#              #
-#    Updated: 2023/03/19 14:18:11 by abenmous         ###   ########.fr        #
+#    Updated: 2023/03/22 14:16:03 by abenmous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,11 +58,11 @@ $(PRINTF) :
 %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME) : $(OBJS) $(PRINTF)
-	@$(CC) $(CFLAGS) $^ -o $@
+$(NAME) : $(OBJS) $(PRINTF) 
+	@$(CC) $(CFLAGS) $(OBJS) $(PRINTF) -o $@
 
-$(BONUS) : $(OBJS_BONUS) $(PRINTF)
-	@$(CC) $(CFLAGS) $^ -o $@
+$(BONUS) : $(OBJS_BONUS) $(PRINTF) 
+	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(PRINTF) -o $@
 
 clean :
 	@rm -rf $(OBJS) $(OBJS_BONUS)

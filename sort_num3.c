@@ -6,7 +6,7 @@
 /*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:59:31 by abenmous          #+#    #+#             */
-/*   Updated: 2023/03/19 15:54:53 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/04/01 15:56:41 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,19 @@ int	*sorted_array(int *s, int l)
 void	sort_number(t_list *stack, int *s, int l)
 {
 	int		i;
-	int		j;
 	t_list	*tmp;
 
-	j = 0;
 	tmp = stack;
 	i = 0;
 	while (tmp && i < l)
 	{
-		if (tmp && i < l && tmp->a == s[i])
-		{
-			tmp->i = j;
-			i = 0;
-			j = 0;
-			tmp = tmp->next;
-		}
-		if (tmp && i < l && tmp->a != s[i])
-		{
+		i = 0;
+		while (tmp->a != s[i])
 			i++;
-			j++;
+		if (tmp->a == s[i])
+		{
+			tmp->i = i;
+			tmp = tmp->next;
 		}
 	}
 }
@@ -72,7 +66,7 @@ void	range_set(t_list **stacka, t_list **stackb, int l)
 	range = 15;
 	e = 0;
 	if (l >= 500)
-		range = 28;
+		range = 35;
 	while ((*stacka))
 	{
 		if ((*stacka)->i <= e)
