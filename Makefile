@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+         #
+#    By: abenmous <abenmous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 14:32:26 by abenmous          #+#    #+#              #
-#    Updated: 2023/03/22 14:16:03 by abenmous         ###   ########.fr        #
+#    Updated: 2023/10/08 19:06:32 by abenmous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRCS_BONUS =	checker_bonus.c \
 
 CC = gcc
 
-PRINTF =  ft_printf/libftprintf.a
+PRINTF =  ft_print/libftprintf.a
 
 CFLAGS = -Wall -Werror -Wextra
 
@@ -53,7 +53,7 @@ all : $(NAME)
 bonus : $(BONUS)
 
 $(PRINTF) :
-	@make -C ft_printf
+	@make -C ft_print
 
 %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -66,11 +66,11 @@ $(BONUS) : $(OBJS_BONUS) $(PRINTF)
 
 clean :
 	@rm -rf $(OBJS) $(OBJS_BONUS)
-	@make clean -C ft_printf
+	@make clean -C ft_print
 
 fclean : clean
 	@rm -rf $(NAME) $(BONUS)
-	@make fclean -C ft_printf
+	@make fclean -C ft_print
 
 re : fclean all
 

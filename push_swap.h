@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abenmous <abenmous@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abenmous <abenmous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:24:05 by abenmous          #+#    #+#             */
-/*   Updated: 2023/04/01 16:10:21 by abenmous         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:07:26 by abenmous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-# include "ft_printf/ft_printf.h"
+# include "ft_print/ft_printf.h"
 
 typedef struct s_list
 {
